@@ -5,6 +5,8 @@ import HomeButton from "@/components/button";
 import HomeAbout from "@/features/home/about";
 import Courses from "@/features/home/courses";
 import Status from "@/features/home/status";
+import JoinUs from "@/features/home/join-us";
+import WorkingStrategy from "@/features/home/working-strategy";
 
 const Home = () => {
   return (
@@ -16,11 +18,14 @@ const Home = () => {
           </h3>
           <h1 className="text-[#17254E] text-[25px] md:text-[50px]  font-bold leading-9 md:leading-14">
             Achieving Your Dreams Through{" "}
-            <span className="text-[#704FE6]">Techspire</span>.
+            <span className="text-[#704FE6]">Techspire</span> Academy.
           </h1>
-          <p className="text-[#333931] text-[15px] my-3 w-[100%] md:w-[70%]">
-            We are experienced in educational platform and skilled strategies
-            for the success of our online learning.
+          <p className="text-[#333931] text-[15px] my-4 w-[100%] md:w-[90%]">
+            At Techspire, we believe education is the foundation for growth,
+            innovation, and success. As a modern online learning platform, we
+            offer carefully curated courses in web development, technology, and
+            digital skills — designed to help you unlock your potential and
+            reach your goals.
           </p>
           <div className="mt-2">
             <HomeButton
@@ -33,13 +38,15 @@ const Home = () => {
             />
           </div>
         </div>
-        <div className='hidden md:block'>
+        <div className="hidden md:block">
           <Image src={TopImage} alt="top-banner" />
         </div>{" "}
       </div>
       <HomeAbout />
-      <Courses/>
-      <Status/>
+      <Courses />
+      <Status />
+      <JoinUs />
+      <WorkingStrategy />
     </>
   );
 };
