@@ -2,80 +2,57 @@
 
 import { useEffect, useState } from "react";
 import HomeButton from "@/components/button";
-import CourseOne from "@/assets/images/firstcourse.svg";
-import CourseTwo from "@/assets/images/secondcourse.svg";
-import CourseThird from "@/assets/images/thirdcourse.svg";
+import CourseOne from "@/assets/images/introduction-HTML.webp";
+import CourseTwo from "@/assets/images/frontend.jpg";
+import CourseThird from "@/assets/images/backend.webp";
+import Fullstack from "@/assets/images/fullstack.jpg";
 import Image from "next/image";
 import StarRatings from "react-star-ratings"; // Make sure the import is correct
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useRouter } from "next/navigation";
+
 
 const CourseCards = [
   {
     image: CourseOne,
-    title: "HTML Web Development and Markup Fundamentals",
-    lesson: "Lesson 3",
+    title: "Intro to Web Development",
+    lesson: "HTML, CSS, Bootstrap, JavaScript",
     hrs: "19h 30m",
-    student: "Students 20+",
+    student: "20+ Students",
     name: "Samantha",
   },
   {
     image: CourseTwo,
-    title: "CSS Web Styling and Responsive Design Techniques",
-    lesson: "Lesson 8",
+    title: "Frontend Development",
+    lesson: "HTML, CSS, JavaScript, React.js, Next.js",
     hrs: "19h 30m",
-    student: "Students 20+",
+    student: "20+ Students",
     name: "Samantha",
   },
   {
     image: CourseThird,
-    title: "Bootstrap Web Development and Responsive UI Design",
-    lesson: "Lesson 5",
+    title: "Backend Development",
+    lesson: "HTML, CSS, JavaScript, Node.js (Express, Next), Database.",
     hrs: "19h 30m",
-    student: "Students 20+",
+    student: "20+ Students",
     name: "Samantha",
   },
   {
-    image: CourseOne,
-    title: "JavaScript Programming for Web Development and Interactivity",
-    lesson: "Lesson 1",
+    image: Fullstack,
+    title: "Fullstack Development",
+    lesson: "Frontend and Backend Development Combined",
     hrs: "19h 30m",
-    student: "Students 20+",
-    name: "Samantha",
-  },
-  {
-    image: CourseThird,
-    title: "React Development for Modern Web Applications",
-    lesson: "Lesson 4",
-    hrs: "19h 30m",
-    student: "Students 20+",
-    name: "Samantha",
-  },
-  {
-    image: CourseThird,
-    title: "Next.js Development for Full-Stack Web Applications",
-    lesson: "Lesson 2",
-    hrs: "19h 30m",
-    student: "Students 20+",
-    name: "Samantha",
-  },
-  {
-    image: CourseThird,
-    title: "Node.js Development for Backend and API Services",
-    lesson: "Lesson 2",
-    hrs: "19h 30m",
-    student: "Students 20+",
-    name: "Samantha",
-  },
-  {
-    image: CourseThird,
-    title: "Version Control with Git: Track, Collaborate, and Deploy",
-    lesson: "Lesson 5",
-    hrs: "19h 30m",
-    student: "Students 20+",
+    student: "20+ Students",
     name: "Samantha",
   },
 ];
 
 const Courses = () => {
+  const router = useRouter()
+  useEffect(() => {
+    AOS.init({ duration: 500 });
+  }, []);
   const [showAll, setShowAll] = useState(false);
 
   // Use array of ratings (one per course)
@@ -103,23 +80,26 @@ const Courses = () => {
         <h1 className="text-[#0E2A46] text-[25px] md:text-[40px] font-bold w-full md:w-[50%] text-center md:text-left leading-8 md:leading-12">
           Level Up Your Skills — Enroll in Techspire Courses Now.
         </h1>
-        <div className="hidden md:block">
-          <HomeButton
-            title={showAll ? "Minimize Courses" : "Load more courses"}
-            type={"button"}
-            bg={"#704FE6"}
-            width={"153px"}
-            height={"55px"}
-            borderRadius="20px"
-            onClick={() => setShowAll(!showAll)}
-          />
-        </div>
+        {visibleCourses.length > 4 && (
+          <div className="hidden md:block">
+            <HomeButton
+              title={showAll ? "Minimize Courses" : "Load more courses"}
+              type={"button"}
+              bg={"#704FE6"}
+              width={"153px"}
+              height={"55px"}
+              borderRadius="20px"
+              onClick={() => setShowAll(!showAll)}
+            />
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-12">
         {visibleCourses.map((course, index) => (
           <div
             key={index}
+            data-aos="flip-right"
             className="p-6 rounded-lg bg-[#704FE6]/[0.05] shadow-md border border-[#704FE6] border-dashed"
           >
             <Image
@@ -144,11 +124,13 @@ const Courses = () => {
             <h2 className="text-[#0E2A46] text-[18px] font-bold mb-2">
               {course.title}
             </h2>
-            <div className="flex items-center justify-between bg-white p-3 my-4">
+            <p className="text-center font-semibold text-[#FE543D]">Courses:</p>
+            <div className="flex items-center justify-between bg-white p-3 my-4 text-center">
               <p className="text-[#4D5756] text-[15px]">{course.lesson}</p>
               {/* <p className="text-[#4D5756] text-[15px]">{course.hrs}</p> */}
-              <p className="text-[#4D5756] text-[15px]">{course.student}</p>
+              {/* <p className="text-[#4D5756] text-[15px]">{course.student}</p> */}
             </div>
+
             <div className="flex items-center justify-center">
               {/* <p className="text-[#17254E] text-[15px]">{course.name}</p> */}
               <HomeButton
@@ -158,23 +140,26 @@ const Courses = () => {
                 width={"123px"}
                 height={"45px"}
                 borderRadius="20px"
+                // onClick={()=> router.push('/login')}
               />
             </div>
           </div>
         ))}
       </div>
 
-      <div className="block md:hidden flex justify-center">
-        <HomeButton
-          title={showAll ? "Minimize Courses" : "Load more courses"}
-          type={"button"}
-          bg={"#17254E"}
-          width={"153px"}
-          height={"55px"}
-          borderRadius="20px"
-          onClick={() => setShowAll(!showAll)}
-        />
-      </div>
+      {visibleCourses.length > 4 && (
+        <div className="hidden md:block">
+          <HomeButton
+            title={showAll ? "Minimize Courses" : "Load more courses"}
+            type={"button"}
+            bg={"#704FE6"}
+            width={"153px"}
+            height={"55px"}
+            borderRadius="20px"
+            onClick={() => setShowAll(!showAll)}
+          />
+        </div>
+      )}
     </div>
   );
 };

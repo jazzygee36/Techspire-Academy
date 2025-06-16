@@ -8,8 +8,9 @@ import ToggleMenu from "@/assets/svg/toggle-menu";
 const Links = [
   { name: "Home", path: "/home" },
   { name: "About us", path: "/about-us" },
-  { name: "Courses", path: "/" },
-  { name: "Contact", path: "/" },
+  // { name: "Courses", path: "/" },
+  // { name: "Contact", path: "/" },
+  // { name: "Login", path: "/login" },
 ];
 
 const Header = () => {
@@ -21,7 +22,7 @@ const Header = () => {
       <div className="bg-[#17254E] text-white p-3 w-full hidden md:block"></div>
 
       <div className="flex justify-between items-center p-4 md:px-10 w-full">
-        <h1 className="text-xl font-bold text-[#0E2A46]">Techspire</h1>
+        <h1 className="text-xl font-bold text-[#0E2A46]">Techspire Academy</h1>
 
         {/* Mobile Menu Toggle */}
         <div className="md:hidden">
@@ -45,7 +46,7 @@ const Header = () => {
             </div>
           ))}
 
-          <div className="mt-4 md:mt-0">
+          {/* <div className="mt-4 md:mt-0">
             <HomeButton
               title={"Create Account"}
               type={"submit"}
@@ -54,7 +55,7 @@ const Header = () => {
               height={"45px"}
               borderRadius="20px"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

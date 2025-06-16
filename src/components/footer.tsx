@@ -1,6 +1,7 @@
 import React from "react";
 import HomeButton from "./button";
 import HomeInput from "./input";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -9,6 +10,12 @@ const Footer = () => {
         <div className="flex  justify-center gap-4 items-center py-4">
           <h1 className="text-xl font-bold text-white">Techspire</h1>
           <h3 className="text-white">Virtual class for Zoom</h3>
+        </div>
+        <div className="flex  justify-center gap-4 items-center py-4">
+          <Link href={"https://www.linkedin.com/in/samsonmesioye/"}>
+            <h1 className="text-sm font-bold text-white">LinkedIn</h1>
+          </Link>
+          {/* <h3 className="text-white text-sm">https://www.linkedin.com/in/samsonmesioye/</h3> */}
         </div>
         <div className="flex justify-center items-center flex-col gap-4 my-6">
           <h1 className="text-[#B2B3CF] font-medium">

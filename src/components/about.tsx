@@ -10,11 +10,11 @@ const HomeAbout = () => {
     <div className="grid grid-col-1 md:grid-cols-2 gap-6 py-10 w-full items-center bg-white">
       <div className="flex items-center justify-center">
         <div>
-          <Image src={Flower} alt="flower" />
+          {/* <Image src={Flower} alt="flower" /> */}
           <Image src={AboutMain} alt="main-about" />
         </div>
         <div>
-          <Image src={Experience} alt="about-down-pix" />
+          {/* <Image src={Experience} alt="about-down-pix" /> */}
           <Image src={AboutDown} alt="about-down-pix" />
         </div>
       </div>
@@ -28,8 +28,7 @@ const HomeAbout = () => {
           <span className="text-[#FE543D]"> professional</span>.
         </h1>
         <p className="text-[#4D5756] text-[15px] my-2 w-[100%] ">
-          At Techspire, we empower learners around the world through flexible,
-          high-quality online education. Our platform is built by experienced
+        Our platform is built by experienced
           educators and industry professionals who are passionate about helping
           you grow, upskill, and earn professionally recognized knowledge — from
           anywhere.
